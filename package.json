@@ -5,7 +5,6 @@
   "description": "This project is simply to outline the processes involved in setting up an Express API with a PostgreSQL database.",
   "main": "app.js",
   "scripts": {
-    "test:watch": "jest --watchAll --detectOpenHandles",
     "test": "vitest run --globals --fileParallelism=false --silent",
     "test:verb": "vitest run --globals --fileParallelism=false --reporter=verbose",
     "test:app": "vitest run --globals --reporter=verbose app",

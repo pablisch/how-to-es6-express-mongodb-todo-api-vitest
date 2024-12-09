@@ -102,6 +102,14 @@ test('should return an array of all todo objects and status 200', async () => {
 
 ## Run the unit tests
 
+We have not got any script to run tests yet, so in the `package.json` scripts object file add:
+
+```bash
+"test": "vitest run --globals --fileParallelism=false --silent"
+```
+
+An explanation of this and some other scripts that you may want to try can be found in the optional section about [adaptions for using Vitest with ES6 modules](7d_misc_adaptationsForEs6VitestTesting.md#my-test-run-script)
+
 ```bash
 npm test
 ```
