@@ -41,10 +41,10 @@ test('should return an array of all todo objects and status 200', async () => {
   // Arrange
   const mReq = {}
   const mRes = {
-    status: jest.fn().mockReturnThis(),
-    json: jest.fn(),
+    status: vi.fn().mockReturnThis(),
+    json: vi.fn(),
   }
-  const mNext = jest.fn()
+  const mNext = vi.fn()
 
   // Act
   await todoController.getAllTodos(mReq, mRes, mNext)
@@ -129,10 +129,10 @@ describe('Todo routes controller functions unit tests', () => {
       // Arrange
       const mReq = {}
       const mRes = {
-        status: jest.fn().mockReturnThis(),
-        json: jest.fn(),
+        status: vi.fn().mockReturnThis(),
+        json: vi.fn(),
       }
-      const mNext = jest.fn()
+      const mNext = vi.fn()
 
       // Act
       await todoController.getAllTodos(mReq, mRes, mNext)

@@ -25,10 +25,10 @@ test.each([
       },
     }
     const mRes = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
+      status: vi.fn().mockReturnThis(),
+      json: vi.fn(),
     }
-    const mNext = jest.fn()
+    const mNext = vi.fn()
 
     // Act
     await todoController.deleteTodo(mReq, mRes, mNext)
@@ -76,10 +76,10 @@ test.each([
       },
     }
     const mRes = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
+      status: vi.fn().mockReturnThis(),
+      json: vi.fn(),
     }
-    const mNext = jest.fn()
+    const mNext = vi.fn()
 
     // Act
     await todoController.deleteTodo(mReq, mRes, mNext)
@@ -113,10 +113,10 @@ describe('deleteTodo()', () => {
         },
       }
       const mRes = {
-        status: jest.fn().mockReturnThis(),
-        json: jest.fn(),
+        status: vi.fn().mockReturnThis(),
+        json: vi.fn(),
       }
-      const mNext = jest.fn()
+      const mNext = vi.fn()
 
       // Act
       await todoController.deleteTodo(mReq, mRes, mNext)
@@ -153,10 +153,10 @@ describe('deleteTodo()', () => {
         },
       }
       const mRes = {
-        status: jest.fn().mockReturnThis(),
-        json: jest.fn(),
+        status: vi.fn().mockReturnThis(),
+        json: vi.fn(),
       }
-      const mNext = jest.fn()
+      const mNext = vi.fn()
 
       // Act
       await todoController.deleteTodo(mReq, mRes, mNext)

@@ -38,10 +38,10 @@ const mReq = {
   body: { task, completed },
 }
 const mRes = {
-  status: jest.fn().mockReturnThis(),
-  json: jest.fn(),
+  status: vi.fn().mockReturnThis(),
+  json: vi.fn(),
 }
-const mNext = jest.fn()
+const mNext = vi.fn()
 ```
 
 This is the most complex example taken from an `updateTodo` function test.
