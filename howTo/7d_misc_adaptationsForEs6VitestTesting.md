@@ -45,7 +45,6 @@ Most of my issues were solved by finding the right script for me and this setup:
 - `--silent` stops much of the noise by not listing all the tests that ran except where relevant to a failed test
 - `--reporter=verbose` uses verbose reporting but this did not seem to make any difference so either it is default or needs to run into an error to see the difference
 - `app` and `con` are simply regex patterns that tell the test run to run the `app.js` or `todoController.js` tests
-
 - The `test` script runs all the tests for all files in series
 - The `test:verb` script runs all the tests for all files in series with verbose reporting
 - The `test:app` test runs all the `app` tests
