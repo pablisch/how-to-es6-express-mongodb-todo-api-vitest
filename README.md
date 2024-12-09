@@ -1,4 +1,4 @@
-# How to build an ES6 modules Express Todo API with MongoDB Atlas Database setup
+# How to build an ES6 modules Express Todo API with MongoDB Atlas Database setup and testing using Vitest
 
 **NOTE:** This project uses `ES6 modules` import syntax. If you prefer to use `Common JS modules` require syntax, please see [this version](https://github.com/pablisch/how-to-express-mongodb-todo-api).
 
@@ -55,6 +55,6 @@ This repository is a dual app/guide to create a simple API with a MongoDB databa
 
 1. [About this repository](howTo/7c_misc_aboutThisRepo.md)
 2. [Notes on testing in this repository](howTo/7a_misc_notesOnTestingInRepo.md)
-3. [Adaptations needed to use Jest with ES6 modules](howTo/7d_misc_adaptationsForEs6Testing.md)
+3. [Adaptations needed to use Vitest with ES6 modules in place of Jest](howTo/7d_misc_adaptationsForEs6VitestTesting.md)
 4. [Running this example API](howTo/7b_misc_runningThisApi.md)
 5. [Controller function variation choices](howTo/7e_misc_controllerFunctionFormChoices.md)
