@@ -14,9 +14,7 @@ There are choices to be made about how to import and export functions. The most 
 Create a `default export` block:
 
 ```javascript
-export default {
-  
-}
+export default {}
 ```
 
 All todo controller functions will go inside this block and will not need any further exporting.
@@ -42,7 +40,7 @@ In the routes/todoRoutes.js file, import the express router and the todo control
 
 ```javascript
 import { Router } from 'express'
-import todoController  from '../controllers/todoController.js'
+import todoController from '../controllers/todoController.js'
 
 const router = Router()
 
@@ -124,7 +122,7 @@ export default app
 
 ```javascript
 import { Router } from 'express'
-import todoController  from '../controllers/todoController.js'
+import todoController from '../controllers/todoController.js'
 
 const router = Router()
 
@@ -140,7 +138,7 @@ import Todo from '../models/todo.js'
 import mongoose from 'mongoose'
 
 export default {
-  getAllTodos: async function(req, res, next) {
+  getAllTodos: async function (req, res, next) {
     try {
       const todos = await Todo.find()
       res.status(200).json(todos)

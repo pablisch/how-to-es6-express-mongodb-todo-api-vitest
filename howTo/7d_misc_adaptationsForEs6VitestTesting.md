@@ -7,6 +7,7 @@ The convoluted title to this section is due to the winding path that led here. I
 **NOTE:** You can see this project [using Jest](https://github.com/pablisch/how-to-es6-express-mongodb-todo-api), or if you prefer, [using Common JS modules and Jest](https://github.com/pablisch/how-to-express-mongodb-todo-api).
 
 Problems solved using Vitest in place of Jest:
+
 - No longer need to use `.mjs` extension for test files
 - No need to import `jest` explicitly to use `fn()`
 - No longer need to include an environment variable in the test run script
@@ -14,6 +15,7 @@ Problems solved using Vitest in place of Jest:
 - No longer concerned about wider use, e.g. with React (in terms of the frameworks lack of support for ES6 modules)
 
 Problems using Vitest in place of Jest:
+
 - Less mature ecosystem and less use means less support information available for Vitest
 - Harder to configure, e.g. running tests in series rather than in parallel
 
@@ -30,6 +32,7 @@ Of course, you need to import different dev dependencies as expected for Vitest 
 ## My test run script
 
 Most of my issues were solved by finding the right script for me and this setup:
+
 ```bash
 "test": "vitest run --globals --fileParallelism=false --silent",
 "test:verb": "vitest run --globals --fileParallelism=false --reporter=verbose",
@@ -38,6 +41,7 @@ Most of my issues were solved by finding the right script for me and this setup:
 ```
 
 **NOTES:**
+
 - `vitest` is the run command for the tests
 - `--run` tells the test to run through once and stop whereas the default is to `watch`.
 - `--globals` uses global imports so that I do not have to import `describe`, `test`, etc. which would also have been easy enough to do
@@ -57,6 +61,7 @@ By default, tests in a file run in serial whilst different files run in parallel
 After many, many suggestions, I found the right config to achieve what I needed and make each file run separately in serial. I do not know that all of this config is necessary but certainly, the sum of it achieves what I wanted and that worked for me. I have now removed it in favour of using `--fileParallelism=false` in the run script.
 
 In `vitest.congfig.ts`:
+
 ```javascript
 import { defineConfig } from 'vitest/config'
 
@@ -67,15 +72,15 @@ export default defineConfig({
     poolOptions: {
       threads: {
         maxThreads: 1,
-        minThreads: 1
-      }
+        minThreads: 1,
+      },
     },
     sequence: {
-      concurrent: false
+      concurrent: false,
     },
     // Ensure files are processed one at a time
-    fileParallelism: false
-  }
+    fileParallelism: false,
+  },
 })
 ```
 

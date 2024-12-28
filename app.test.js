@@ -68,7 +68,9 @@ describe('App todo endpoints integration tests', () => {
       'should add a todo to the database and return status 201 and the created todo object when passed the todo: "%s"',
       async (task) => {
         // Act
-        const response = await request(app).post('/api/v1.0/todos').send({ task })
+        const response = await request(app)
+          .post('/api/v1.0/todos')
+          .send({ task })
 
         // Assert
         expect(response.status).toBe(201)
@@ -87,7 +89,9 @@ describe('App todo endpoints integration tests', () => {
       'should return status 400 and an appropriate error message when given task value: "%s"',
       async (task, errorMessage) => {
         // Act
-        const response = await request(app).post('/api/v1.0/todos').send({ task })
+        const response = await request(app)
+          .post('/api/v1.0/todos')
+          .send({ task })
 
         // Assert
         expect(response.status).toBe(400)
@@ -170,7 +174,9 @@ describe('App todo endpoints integration tests', () => {
       'should update todo in the database and return status 200 and an array with the updated todo object with id: "%s" when only the task property: "%s", is passed in',
       async (id, task) => {
         // Act
-        const response = await request(app).patch(`/api/v1.0/todos/${id}`).send({ task })
+        const response = await request(app)
+          .patch(`/api/v1.0/todos/${id}`)
+          .send({ task })
 
         // Assert
         expect(response.status).toBe(200)
@@ -335,7 +341,9 @@ describe('App todo endpoints integration tests', () => {
       'should return an appropriate status and error message when passed the ID param: "%s" and ONLY task property: "%s"',
       async (id, task, status, errorMessage) => {
         // Act
-        const response = await request(app).patch(`/api/v1.0/todos/${id}`).send({ task })
+        const response = await request(app)
+          .patch(`/api/v1.0/todos/${id}`)
+          .send({ task })
 
         // Assert
         expect(response.status).toBe(status)

@@ -70,7 +70,6 @@ In `callSeedTodos.js`, import the `seedTodos` function and call it:
 
 ```javascript
 import seedTodos from './seedTodos'
-
 ;(async () => {
   try {
     await seedTodos()
@@ -149,7 +148,6 @@ export default seedTodos
 
 ```javascript
 import seedTodos from './seedTodos'
-
 ;(async () => {
   try {
     await seedTodos()

@@ -38,9 +38,7 @@ There are choices to be made about how to import and export functions. The most 
 Create a `default export` block:
 
 ```javascript
-export default {
-  
-}
+export default {}
 ```
 
 All todo controller functions will go inside this block and will not need any further exporting.
@@ -164,7 +162,7 @@ import Todo from '../models/todo.js'
 import mongoose from 'mongoose'
 
 export default {
-  getAllTodos: async function(req, res, next) {
+  getAllTodos: async function (req, res, next) {
     try {
       const todos = await Todo.find()
       res.status(200).json(todos)

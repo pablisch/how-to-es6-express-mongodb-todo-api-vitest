@@ -1,38 +1,36 @@
-import Todo from '../models/todo.js'
+import Sample from '../models/sample.js'
 import mongoose from 'mongoose'
 
 export default {
-  getAllTodos: async (req, res, next) => {
+  getAllSamples: async (req, res, next) => {
     try {
-      let todos = await Todo.find()
-      const bits = todos.map(({ _id, ...rest }) => rest)
-
-      res.status(200).json(todos)
+      let samples = await Sample.find()
+      res.status(200).json(samples)
     } catch (error) {
       next(error)
     }
   },
 
-  getTodoById: async (req, res, next) => {
+  getSampleById: async (req, res, next) => {
     const { id } = req.params
     if (!mongoose.Types.ObjectId.isValid(id))
-      return next({ status: 400, message: `'${id}' is not a valid todo ID` })
+      return next({ status: 400, message: `'${id}' is not a valid sample ID` })
     try {
-      let todo = await Todo.findById(id)
-      if (!todo) {
+      let sample = await Sample.findById(id)
+      if (!sample) {
         return next({
           status: 404,
-          message: `No todo with ID ${id} was found in the database`,
+          message: `No sample with ID ${id} was found in the database`,
         })
       }
-      const { _id, ...rest } = todo
-      res.status(200).json(todo)
+      const { _id, ...rest } = sample
+      res.status(200).json(sample)
     } catch (error) {
       next(error)
     }
   },
 
-  createTodo: async (req, res, next) => {
+  createSample: async (req, res, next) => {
     const { task } = req.body
     if (task === '')
       return next({
@@ -45,43 +43,43 @@ export default {
         status: 400,
         message: `Task must be a string but type ${typeof task} was given`,
       })
-    const todo = new Todo({
+    const sample = new Sample({
       task,
       completed: false,
     })
     try {
-      await todo.save()
-      res.status(201).json(todo)
+      await sample.save()
+      res.status(201).json(sample)
     } catch (error) {
       next(error)
     }
   },
 
-  deleteTodo: async (req, res, next) => {
+  deleteSample: async (req, res, next) => {
     const { id } = req.params
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return next({ status: 400, message: `'${id}' is not a valid todo ID` })
+      return next({ status: 400, message: `'${id}' is not a valid sample ID` })
     }
     try {
-      const todo = await Todo.findByIdAndDelete(id)
-      if (!todo) {
+      const sample = await Sample.findByIdAndDelete(id)
+      if (!sample) {
         return next({
           status: 404,
-          message: `No todo with ID ${id} was found in the database`,
+          message: `No sample with ID ${id} was found in the database`,
         })
       }
       res
         .status(200)
-        .json({ message: `Todo with ID ${id} was successfully deleted` })
+        .json({ message: `Sample with ID ${id} was successfully deleted` })
     } catch (error) {
       next(error)
     }
   },
 
-  updateTodo: async (req, res, next) => {
+  updateSample: async (req, res, next) => {
     const { id } = req.params
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return next({ status: 400, message: `'${id}' is not a valid todo ID` })
+      return next({ status: 400, message: `'${id}' is not a valid sample ID` })
     }
     const updates = req.body
     if (!updates || typeof updates !== 'object' || Array.isArray(updates)) {
@@ -100,7 +98,7 @@ export default {
     if (!task && !completed && completed !== false) {
       return next({
         status: 400,
-        message: 'Updating a todo requires a task and/or completed property',
+        message: 'Updating a sample requires a task and/or completed property',
       })
     }
     if (task && typeof task !== 'string')
@@ -114,17 +112,17 @@ export default {
         message: `Completed property must be a Boolean. Received type ${typeof completed}`,
       })
     try {
-      const todo = await Todo.findByIdAndUpdate(id, updates, {
+      const sample = await Sample.findByIdAndUpdate(id, updates, {
         new: true,
         runValidators: true,
       })
-      if (!todo) {
+      if (!sample) {
         return next({
           status: 404,
-          message: `No todo with ID ${id} was found in the database`,
+          message: `No sample with ID ${id} was found in the database`,
         })
       }
-      res.status(200).json(todo)
+      res.status(200).json(sample)
     } catch (error) {
       next(error)
     }

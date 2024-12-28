@@ -16,6 +16,7 @@ My choice for this project was to have an [object of arrow functions](#object-of
 ## Named export with arrow function
 
 Example declaration:
+
 ```javascript
 export const getAllTodos = async (req, res, next) => {
   try {
@@ -30,14 +31,20 @@ export const getAllTodos = async (req, res, next) => {
 This is very lightweight and single functions can be easily imported and used.
 
 Example import:
+
 ```javascript
-import { getAllTodos, otherControllerFunction } from '../controllers/todoController.js'
+import {
+  getAllTodos,
+  otherControllerFunction,
+} from '../controllers/todoController.js'
 ```
 
 Example use:
+
 ```javascript
 router.get('/todos', getAllTodos)
 ```
+
 ```javascript
 await getAllTodos()
 ```
@@ -45,6 +52,7 @@ await getAllTodos()
 ## Named export with traditional/classic function
 
 Example declaration:
+
 ```javascript
 export const getAllTodos = async function (req, res, next) {
   try {
@@ -63,6 +71,7 @@ The import and usage is the same as those for the named export with arrow functi
 ## Object of arrow functions
 
 Example declaration:
+
 ```javascript
 export default {
   getAllTodos: async (req, res, next) => {
@@ -76,19 +85,22 @@ export default {
 }
 ```
 
-Other functions will then also go inside the `export default` block. 
+Other functions will then also go inside the `export default` block.
 
 This form does not have the function context, `this`. This is not a concern here but if, for example, I wanted to call functions from both inside and outside this object then it would be easier to use an [object of traditional/classic functions](#object-of-traditionalclassic-function).
 
 Example import:
+
 ```javascript
 import todoController from '../controllers/todoController.js'
 ```
 
 Example use:
+
 ```javascript
 router.get('/todos', todoController.getAllTodos)
 ```
+
 ```javascript
 await todoController.getAllTodos()
 ```
@@ -98,6 +110,7 @@ The need to declare the controller object when calling the function, e.g. `todoC
 ## Object of traditional/classic function
 
 Example declaration:
+
 ```javascript
 export default {
   getAllTodos: async function (req, res, next) {
@@ -137,14 +150,17 @@ export default new TodoController()
 This is an option that I have never used and have particular plans to, so nothing personally to say about it.
 
 Example import:
+
 ```javascript
 import TodoController from '../controllers/todoController.js'
 ```
 
 Example use:
+
 ```javascript
-router.get('/todos', TodoController.getAllTodos.bind(TodoController));
+router.get('/todos', TodoController.getAllTodos.bind(TodoController))
 ```
+
 ```javascript
 await todoController.getAllTodos.bind(TodoController)
 ```
@@ -156,24 +172,27 @@ The above is a very limited list of possible options with relatively little expl
 - different ways to export and import named functions
 - destructuring an exported object
 
-
 ### Named export export variation
 
 Instead of directly exporting a named function:
+
 ```javascript
 export const getAllTodos = async (req, res, next) => {
-  console.log("Doing something")
+  console.log('Doing something')
 }
 ```
+
 and importing it:
+
 ```javascript
 import { getAllTodos } from '../controllers/todoController.js'
 ```
 
 There is the option of exporting them in an export object:
+
 ```javascript
 const getAllTodos = async (req, res, next) => {
-  console.log("Doing something")
+  console.log('Doing something')
 }
 
 export default {
@@ -181,11 +200,15 @@ export default {
   otherFunctions,
 }
 ```
+
 and then import the object:
+
 ```javascript
 import todoController from '../controllers/todoController.js'
 ```
+
 and use the functions:
+
 ```javascript
 await todoController.getAllTodos()
 ```
@@ -195,11 +218,13 @@ await todoController.getAllTodos()
 Given my preferred method, using an [object of arrow functions](#object-of-arrow-functions), whilst it is not possible to directly destructure the object, it is possible to import and then destructure if that is desired.
 
 So you cannot do this:
+
 ```javascript
 import { getAllTodos } from './todo.controller.js'
 ```
 
 but you can do this:
+
 ```javascript
 import todoController from './todo.controller.js'
 

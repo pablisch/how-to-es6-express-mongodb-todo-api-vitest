@@ -11,7 +11,9 @@
     "test:con": "vitest run --globals --reporter=verbose con",
     "start": "node --watch server.js",
     "seed:todos:dev": "node seed/callSeedTodos.js",
+    "seed:samples:dev": "node seed/callSeedSamples.js",
     "seed:todos:test": "MONGODB_DATABASE_NAME=todo_TEST node seed/callSeedTodos.js",
+    "seed:todos:prod": "MONGODB_DATABASE_NAME=todo_PROD node seed/callSeedTodos.js",
     "prettier": "prettier . --write"
   },
   "author": "",
